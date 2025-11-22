@@ -1,0 +1,140 @@
+from vpython import *
+import math
+
+scene.title = "unsamani"
+scene.width = 800
+scene.height = 600
+scene.background = color.black
+scene.forward = vector(-1, -0.3, -1)
+
+distant_light(direction=vector(1, 1, 1), color=color.blue)
+
+sun = sphere(
+    pos=vector(0, 0, 0),
+    radius=1,
+    color=color.yellow,                                                                                                                   
+    emissive=True,
+)
+
+def unsamani(position, color_body):
+    base = cylinder(pos=position, axis=vector(0, 0.1, 0), radius=0.5, color=color_body)
+    dome = sphere(pos=position + vector(0, 0.2, 0), radius=0.3)
+    return compound([base, dome], pos=position, make_trail=True, trail_color=color_body)
+
+plan1 = unsamani(vector(3, 0, 0), color.cyan)
+plan2 = unsamani(vector(5, 0, 0), color.red)
+plan3 = unsamani(vector(4, 0, 0), color.green)
+plan4 = unsamani(vector(6, 0, 0), color.orange)
+plan5 = unsamani(vector(7, 0, 0), color.magenta)
+plan6 = unsamani(vector(8, 0, 0), color.white)
+plan7 = unsamani(vector(9, 0, 0), color.yellow)
+plan8 = unsamani(vector(10, 0, 0), color.purple)
+
+
+
+label1 =label(pos=plan1.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan1.color, box=False)
+label2 = label(pos=plan2.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan2.color, box=False)
+label3 = label(pos=plan3.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan3.color, box=False)
+label4 = label(pos=plan4.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan4.color, box=False)
+label5 = label(pos=plan5.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan5.color, box=False)
+label6 = label(pos=plan6.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan6.color, box=False)
+label7 = label(pos=plan7.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan7.color, box=False)
+label8 = label(pos=plan8.pos + vector(0, 0.6, 0),  xoffset=0, yoffset=0, space=30, height=12, color=plan8.color, box=False)
+
+angle1 = angle2 = angle3 = angle4 = angle5 = angle6 = angle7 = angle8 = 0
+
+speed1 = 0.03
+speed2 = 0.02
+speed3 = 0.04
+speed4 = 0.015
+speed5 = 0.025
+speed6 = 0.035
+speed7 = 0.01
+speed8 = 0.005
+
+incline1 = 20 * math.pi/180
+incline2 = -50 * math.pi/180
+incline3 = 30 * math.pi/180
+incline4 = -20 * math.pi/180
+incline5 = 40 * math.pi/180 
+incline6 = -30 * math.pi/180
+incline7 = 10 * math.pi/180
+incline8 = -40 * math.pi/180
+
+a1, b1 = 3, 2.5
+a2, b2 = 5, 4.5
+a3, b3 = 4, 3.5
+a4, b4 = 6, 5.5
+a5, b5 = 7, 6.5
+a6, b6 = 8, 7.5
+a7, b7 = 9, 8.5
+a8, b8 = 10, 9.5
+
+while True:
+    rate(60)
+
+    angle1 += speed1
+    angle2 += speed2
+    angle3 += speed3
+    angle4 += speed4
+    angle5 += speed5
+    angle6 += speed6
+    angle7 += speed7
+    angle8 += speed8
+
+    x1 = a1 * math.cos(angle1)
+    y1 = b1 * math.sin(angle1) * math.cos(incline1)
+    z1 = b1 * math.sin(angle1) * math.sin(incline1)
+    plan1.pos = vector(x1, y1, z1)
+    label1.pos = plan1.pos + vector(0, 0.6, 0)
+
+    x2 = a2 * math.cos(angle2)
+    y2 = b2 * math.sin(angle2) * math.cos(incline2)
+    z2 = b2 * math.sin(angle2) * math.sin(incline2)
+    plan2.pos = vector(x2, y2, z2)
+    label2.pos = plan2.pos + vector(0, 0.6, 0)
+
+    x3 = a3 * math.cos(angle3)
+    y3 = b3 * math.sin(angle3) * math.cos(incline3)
+    z3 = b3 * math.sin(angle3) * math.sin(incline3)
+    plan3.pos = vector(x3, y3, z3)
+    label3.pos = plan3.pos + vector(0, 0.6, 0)
+    
+    x4 = a4 * math.cos(angle4)
+    y4 = b4 * math.sin(angle4) * math.cos(incline4)
+    z4 = b4 * math.sin(angle4) * math.sin(incline4)
+    plan4.pos = vector(x4, y4, z4)
+    label4.pos = plan4.pos + vector(0, 0.6, 0)
+    
+    x5 = a5 * math.cos(angle5)
+    y5 = b5 * math.sin(angle5) * math.cos(incline5)
+    z5 = b5 * math.sin(angle5) * math.sin(incline5)
+    plan5.pos = vector(x5, y5, z5)
+    label5.pos = plan5.pos + vector(0, 0.6, 0)
+    
+    x6 = a6 * math.cos(angle6)
+    y6 = b6 * math.sin(angle6) * math.cos(incline6)
+    z6 = b6 * math.sin(angle6) * math.sin(incline6)
+    plan6.pos = vector(x6, y6, z6)
+    label6.pos = plan6.pos + vector(0, 0.6, 0)
+    
+    x7 = a7 * math.cos(angle7)
+    y7 = b7 * math.sin(angle7) * math.cos(incline7)
+    z7 = b7 * math.sin(angle7) * math.sin(incline7)
+    plan7.pos = vector(x7, y7, z7)
+    label7.pos = plan7.pos + vector(0, 0.6, 0)
+    
+    x8 = a8 * math.cos(angle8)
+    y8 = b8 * math.sin(angle8) * math.cos(incline8)
+    z8 = b8 * math.sin(angle8) * math.sin(incline8)
+    plan8.pos = vector(x8, y8, z8)
+    label8.pos = plan8.pos + vector(0, 0.6, 0)
+
+    plan1.rotate(angle=0.1, axis=vector(0,1,0))
+    plan2.rotate(angle=0.07, axis=vector(0,1,0))
+    plan3.rotate(angle=0.1, axis=vector(0,1,0))
+    plan4.rotate(angle=0.05, axis=vector(0,1,0))
+    plan5.rotate(angle=0.08, axis=vector(0,1,0))
+    plan6.rotate(angle=0.09, axis=vector(0,1,0))
+    plan7.rotate(angle=0.04, axis=vector(0,1,0))
+    plan8.rotate(angle=0.03, axis=vector(0,1,0))
